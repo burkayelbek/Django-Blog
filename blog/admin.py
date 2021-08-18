@@ -1,6 +1,6 @@
 from django.contrib import admin
 from blog.models import (
-    CategoryModel, PostModel, CommentModel
+    CategoryModel, PostModel, CommentModel, ContactModel
 ) 
 
 admin.site.register(CategoryModel)
@@ -19,3 +19,10 @@ class CommentAdmin(admin.ModelAdmin):
         'writer', 'created_date','updated_date'
     )
 admin.site.register(CommentModel, CommentAdmin)
+
+class ContactAdmin(admin.ModelAdmin):
+    search_fields = ('email',)
+    list_display=(
+        'email', 'created_date'
+    )
+admin.site.register(ContactModel, ContactAdmin)
