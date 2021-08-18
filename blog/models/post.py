@@ -2,11 +2,12 @@ from django.db import models
 from autoslug import AutoSlugField
 from blog.models import CategoryModel
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 class PostModel(models.Model):
     image = models.ImageField(upload_to='post_images')
     title = models.CharField(max_length=50)
-    content = models.TextField()
+    content = RichTextField()
     created_date = models.DateTimeField(auto_now_add=True) # Yazılar tablosu bir kayıt oluşturulduğu zaman oluşturulma tarihi otomatik olarak belirlenecek. Timezone ile yapılabilir.
     edited_date = models.DateTimeField(auto_now=True) # İçerik her değiştirildiğinde düzenlenme tarihi otomatik yenilenecek.
     slug = AutoSlugField(populate_from="title",unique=True)
