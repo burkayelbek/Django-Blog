@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from blog.models import PostModel
 
 class CommentModel(models.Model):
-    writer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post") # Eğer kullanıcı silinirse yorumları silinecek / Yazan kişinin yorumlarına erişilebilir.
+    #writer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post") # Eğer kullanıcı silinirse yorumları silinecek / Yazan kişinin yorumlarına erişilebilir.
+    writer = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name="post") # Eğer kullanıcı silinirse yorumları silinecek / Yazan kişinin yorumlarına erişilebilir.
     post = models.ForeignKey(PostModel, on_delete=models.CASCADE, related_name="posts") # Yazı sinilirse o yazıya ait yorumlar silinecek 
     # Related name ile ters ilişiki kuruluyor. Yazının yorumlarına erişebilir
     comment = models.TextField()
