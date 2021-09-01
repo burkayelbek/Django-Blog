@@ -3,9 +3,8 @@ from django.contrib.auth.admin import UserAdmin
 from account.models import CustomUserModel
 
 
-
+@admin.register(CustomUserModel)
 class CustomAdmin(UserAdmin):
-    model = CustomUserModel
     list_display=('username','email')
     # Avatar ekleme alanı için yapıldı.
     fieldsets = UserAdmin.fieldsets + (
@@ -15,4 +14,4 @@ class CustomAdmin(UserAdmin):
     )
     
 
-admin.site.register(CustomUserModel,CustomAdmin)
+# admin.site.register(CustomUserModel,CustomAdmin) decorator kullanarak kaldırdık.
