@@ -1,0 +1,50 @@
+{% load static %} <!-- bootstrap ve js static dosyaları için oluşturuldu -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="{% static 'css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+      {% include 'components/navbar.html' %}
+    <!-- ---------------------------- -->
+
+    <!-- CONTENT CONTAINER-->
+    <div class="container mt-3">
+      <div class="row">
+        <!-- LEFT SIDE OF CONTAINER-->
+        <div class="col-sm-9">
+          {% block content %}{% endblock %}
+        </div>
+         <!-- END OF LEFT SIDE OF CONTAINER -->
+
+        <!-- RIGHT SIDE OF CONTAINER-->
+          {% include 'components/sidebar.html' %}
+        <!-- END OF RIGHT SIDE OF CONTAINER -->
+      </div>
+       <!-- FOOTER -->
+      {% include 'components/footer.html' %}
+      <!-- END OF FOOTER -->
+    </div>
+     <!-- END OF CONTENT CONTAINER -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="{% static 'js/bootstrap.bundle.min.js' %}"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
