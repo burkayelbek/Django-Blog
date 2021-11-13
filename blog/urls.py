@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from blog.views import contact, homepage, category
+from blog.views import contact, homepage, category, my_posts
 
 urlpatterns = [
-    path('',homepage , name='homepage'),
+    path('',homepage , name='homepage'),  #name parametresi base html içinde bulunan html dosyalarında url 'homepage' yönlendirmesi için yapılmaktadır.
     path('contact',contact, name = 'contact'),
-    path('category/<slug:categorySlug>', category , name="category")
+    path('category/<slug:categorySlug>', category , name='category'),
+    path('my-posts', my_posts, name = 'my_posts')
 ]

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %} My Posts {% endblock %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Post Title</th>
+      <th scope="col">Updated Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- START OF CARD OF CONTENT-->
+    {% for post in posts %}
+    <tr>
+      <th scope="row">{{ post.id }}</th>
+      <td>{{ post.title }}</td>
+      <td>{{ post.updated_date }}</td>
+      <td>Will come actions</td>
+    </tr>
+
+    <!--
+<div class="card mb-3">
+ <div class="row g-0">
+   <div class="col-md-4">
+     <img src="{{ post.image.url}}" class="img-fluid rounded-start img" />
+   </div>
+   <div class="col-md-8">
+     <div class="card-body">
+       <h5 class="card-title">{{ post.title }}</h5>
+       <p class="card-text">
+         {{post.content|safe|truncatechars_html:75}}
+       </p>
+       <p class="card-text">
+         <small class="text-muted">Posted since {{post.edited_date|timesince}}</small> <!-- Abstract modelden geliyor.
+       </p>
+     </div>
+   </div>
+ </div>
+</div>-->
+
+    {% empty %}
+    <p>There is no posts</p>
+    {% endfor%}
+  </tbody>
+</table>
+
+<!-- PAGINATION -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    {% if posts.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{posts.previous_page_number}}"
+        >Previous Page</a
+      >
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    {% endif%}
+    <li class="page-item">
+      <a class="page-link" href="#">{{posts.number}}</a>
+    </li>
+    {% if posts.has_next%}
+    <li class="page-item">
+      <a class="page-link" href="?page={{posts.next_page_number}}"
+        >{{posts.next_page_number}}</a
+      >
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{posts.paginator.num_pages}}"
+        >Last page</a
+      >
+    </li>
+    {% endif%}
+  </ul>
+</nav>
+{% endblock %}

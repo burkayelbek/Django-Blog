@@ -1,14 +1,19 @@
 <!-- RIGHT SIDE OF CONTAINER-->
 <div class="col-sm-3">
-    <div class="card mb-3">
-      <div class="card-header">MENU</div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Change Profile</li>
-        <li class="list-group-item">Change Password</li>
-        <li class="list-group-item">Add Post</li>
-        <li class="list-group-item">My Posts</li>
-        <li class="list-group-item">Logout</li>
-      </ul>
-    </div>
+  <div class="card mb-3">
+    <div class="card-header">MENU</div>
+    
+    {% if request.user.is_authenticated %}
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Change Profile</li>
+      <li class="list-group-item">Change Password</li>
+      <li class="list-group-item">Add Post</li>
+      <li class="list-group-item" ><a href="{% url 'my_posts' %}">My Posts</a></li>
+      <li class="list-group-item">Logout</li>
+    </ul>
+    {% else %}
+    Login form gelecek
+    {% endif %}
+  </div>
 </div>
 <!-- END OF RIGHT SIDE OF CONTAINER -->

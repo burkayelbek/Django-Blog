@@ -25,9 +25,12 @@
           {% endfor %}
           
         </ul>
-        <form class="d-flex">
+        <!-- anasayfaya get isteği yapacak o yüzden forma action homepage verdik. -->
+        <form class="d-flex" action="{% url 'homepage' %}"> 
+          <!-- name = "query" (homepage.py view içindekiyle aynı olmalı) parametresi verdik arama yapmak için gerekli inputa. -->
           <input
             class="form-control me-2"
+            name="query"
             type="search"
             placeholder="Search"
             aria-label="Search"
