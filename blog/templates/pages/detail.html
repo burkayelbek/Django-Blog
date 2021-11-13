@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %} {{post.title}} {% endblock %} 
+{% block content %}
+<!-- START OF CARD OF CONTENT-->
+ <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ post.image.url}}" class="img-fluid rounded-start img" />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">
+          {{post.content|safe }}
+        </p>
+        <p class="card-text">
+          <small class="text-muted">Posted since {{post.edited_date|timesince}}</small> <!-- Abstract modelden geliyor. -->
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5>Comments </h5>
+
+{% for theComment in comments %}
+
+<div class="card">
+    <div class="card-body" style="display: flex;flex-direction: row;">
+        <div>
+            {% if theComment.writer.avatar %}
+            <img src="{{ theComment.writer.avatar.url }}" class="rounded" class="pt-4" width="75px" height="75px">
+            {% else %}
+            <img src="{% static 'img/no-avatar.png' %}" class="rounded" class="pt-4" width="75px" height="75px">
+            {% endif%}
+
+        </div>
+        <div>
+            <h5 class="card-title"> {{theComment.writer.username }}</h5>
+            <p class="card-text">{{theComment.comment }}</p>
+        </div>
+    </div>
+</div>
+{%empty%}
+<p>There are no comments in this post</p>
+{% endfor %}
+{% endblock %}

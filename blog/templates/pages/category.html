@@ -11,7 +11,10 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ post.title }}</h5>
+        <!-- <h5 class="card-title">{{ post.title }}</h5> -->
+        <h5 class="card-title">
+            <a href="{% url 'detail' slug=post.slug %}">{{ post.title }}</a>
+        </h5>
         <p class="card-text">
           {{post.content|safe|truncatechars_html:75}}
         </p>
