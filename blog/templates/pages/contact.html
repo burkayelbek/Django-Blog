@@ -3,7 +3,9 @@
 {% block title %} Contact {% endblock %} 
 {% block content %}
 <h1> İLETİŞİM SAYFASIDIR </h1>
-    {% if sayi == 5%}
-        sayi 5'tir
-    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {{form }}
+        <input type="submit" value="Submit"/>
+    </form>
 {% endblock %}

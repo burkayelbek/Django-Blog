@@ -127,4 +127,4 @@ AUTH_USER_MODEL = 'account.CustomUserModel' # We created our custom model
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') #Production için ürünü yayına alındığı zaman kullanılır.
