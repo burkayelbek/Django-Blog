@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 def my_posts(request):
     posts = request.user.posts.order_by('-id') # Post modelinden author related name('posts' buradan gelmektedir.) üzerinden çektik.
     page = request.GET.get('page')
-    paginator = Paginator(posts,1) #Which post and how many page sliced
+    paginator = Paginator(posts,5) #Which post and how many page sliced
 
     return render(request,'pages/my-posts.html',context={
         'posts':paginator.get_page(page),
