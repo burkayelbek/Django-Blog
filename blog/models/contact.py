@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ContactModel(models.Model):
     email = models.EmailField(max_length=250)
     name_surname = models.CharField(max_length=150)
