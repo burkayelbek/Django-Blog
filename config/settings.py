@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'blog',
     'account',
     # third party app
-    'ckeditor', 
+    'ckeditor',
+    'crispy_forms'
 
 ]
 
@@ -128,3 +129,5 @@ AUTH_USER_MODEL = 'account.CustomUserModel' # We created our custom model
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') #Production için ürünü yayına alındığı zaman kullanılır.
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # Crispy form için bootstrap 4 template olarak ayarladık
