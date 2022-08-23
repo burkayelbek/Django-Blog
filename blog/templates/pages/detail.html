@@ -17,6 +17,11 @@
         </p>
         <p class="card-text">
           <small class="text-muted">Posted since {{post.edited_date|timesince}}</small> <!-- Abstract modelden geliyor. -->
+         {% if request.user == post.author %}
+         <p>
+          <a class="btn btn-danger" href="{% url 'update-text' slug=post.slug %}">Edit</a>
+        </p>
+         {% endif %}
         </p>
       </div>
     </div>

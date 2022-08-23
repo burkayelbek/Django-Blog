@@ -4,3 +4,4 @@ from .category import category
 from .my_posts import my_posts
 from .detail import detail
 from .add_text import add_text
+from .update_text import update_text
